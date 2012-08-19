@@ -2,5 +2,7 @@
 bin
 obj
 
+*.exe
+
 # mstest test results
 TestResults
