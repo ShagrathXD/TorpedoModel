@@ -21,8 +21,6 @@ namespace TorpedoModel
             move = move_;
             move.InitMovingProcessor();
             Console.WriteLine("init move proc ok");
-            move.torp.InitTorpedo();
-            Console.WriteLine("init torpedo ok");
             TorpedoControlAlgorithm alg_ = new TorpedoControlAlgorithm(move.torp, move.targ);
             alg = alg_;
             while (!stop_)  

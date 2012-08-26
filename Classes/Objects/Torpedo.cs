@@ -25,7 +25,7 @@ namespace TorpedoModel.Classes
                rudderCourse = rudder_;
            }
 
-           public void InitTorpedo()    //инициализация всей торпеды
+           public Torpedo()     //инициализация всей торпеды
            {
                InitCoord(coord);
                InitRudder(rudder);
