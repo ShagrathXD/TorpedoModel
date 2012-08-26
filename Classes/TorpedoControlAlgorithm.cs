@@ -41,20 +41,33 @@ namespace TorpedoModel
 
         public void Convergence()   //режим сближения
         {
-            if (targ.distance < d2_)
+            switch (targ.distance)
             {
-                if (targ.distance < d3_)
-                {
-                    if (targ.distance < d4_)
-                        torp.emitterMode = "C4";
-                    else
-                        torp.emitterMode = "C3";
-                }
-                else
+                case (targ.distance<d4_):
+                    torp.emitterMode = "C4";
+                case ((targ.distance<d3_)&(targ.distance>d4_)):
+                    torp.emitterMode = "C3";
+                case (targ.distance<d2_)&(targ.distance>d3_):
                     torp.emitterMode = "C2";
+                case (targ.distance>d2_):
+                    torp.emitterMode = "C1";
             }
-            else
-                torp.emitterMode = "C1";
+
+            
+  ///          if (targ.distance < d2_)
+  ///          {
+  ///              if (targ.distance < d3_)
+  ///              {
+  ///                  if (targ.distance < d4_)
+  ///                      torp.emitterMode = "C4";
+  ///                  else
+  ///                      torp.emitterMode = "C3";
+  ///              }
+  ///              else
+  ///                  torp.emitterMode = "C2";
+  ///          }
+            ///          else
+            ///              torp.emitterMode = "C1";
         }
 
         public void FirstSearch()   //первичный поиск
