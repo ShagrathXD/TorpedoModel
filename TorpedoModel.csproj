@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Debug\MovingProcessor.cs" />
+    <Compile Include="Classes\Objects\ObjectControl.cs" />
     <Compile Include="Classes\Objects\Target.cs" />
     <Compile Include="Classes\Objects\Torpedo.cs" />
     <Compile Include="Classes\Timer.cs" />
