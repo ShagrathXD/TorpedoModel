@@ -9,9 +9,9 @@ namespace TorpedoModel
 {
     public class TorpedoControlAlgorithm
     {
-        private double d2_ = 700; //дистанция, на которой режим излучения меняется с "С1" на "С2"
-        private double d3_ = 500;  //дистанция, на которой длительность акустического цикла уменьшается в 4 раза, м
-        private double d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
+        public const int d2_ = 700; //дистанция, на которой режим излучения меняется с "С1" на "С2"
+        public const int d3_ = 500;  //дистанция, на которой длительность акустического цикла уменьшается в 4 раза, м
+        public const int d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
         
         public Target targ = new Target();    
@@ -41,16 +41,19 @@ namespace TorpedoModel
 
         public void Convergence()   //режим сближения
         {
-            switch (targ.distance)
+            switch ((int)(targ.distance))
             {
-                case (targ.distance<d4_):
+                case d4_:
                     torp.emitterMode = "C4";
-                case ((targ.distance<d3_)&(targ.distance>d4_)):
+                    break;
+                case (d3_):
                     torp.emitterMode = "C3";
-                case (targ.distance<d2_)&(targ.distance>d3_):
+                    break;
+                case (d2_):
                     torp.emitterMode = "C2";
-                case (targ.distance>d2_):
-                    torp.emitterMode = "C1";
+                    break;
+                default:
+                    break;
             }
 
             
