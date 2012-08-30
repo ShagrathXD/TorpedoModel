@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TorpedoModel.Classes;
 using TorpedoModel.Interfaces;
+using TorpedoModel.Classes.Objects;
 //ядро системы
 namespace TorpedoModel
 {
@@ -12,6 +13,7 @@ namespace TorpedoModel
         private double step_ = 1;   //шаг системного таймера
         private bool stop_ = false;  //флаг остановки 
         MovingProcessor move;
+        ObjectControl obj; 
         TorpedoControlAlgorithm alg;
         Timer timer = new Timer();
         
@@ -23,6 +25,8 @@ namespace TorpedoModel
             Console.WriteLine("init move proc ok");
             TorpedoControlAlgorithm alg_ = new TorpedoControlAlgorithm(move.torp, move.targ);
             alg = alg_;
+            ObjectControl obj_ = new ObjectControl();
+            obj = obj_;
             while (!stop_)  
             {
                 alg.Process();

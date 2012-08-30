@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TorpedoModel.Classes.Objects
 {
-    class ObjectControl
+    public class ObjectControl
     {
         public double speed = 0;  //скорость торпеды
         public string emitterMode = "C1";   //режим излучения
