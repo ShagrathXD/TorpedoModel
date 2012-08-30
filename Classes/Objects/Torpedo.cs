@@ -7,7 +7,9 @@ using TorpedoModel.Library.Geometry;
 namespace TorpedoModel.Classes
 {
    public  class Torpedo
-    {     
+    {
+       TorpedoControlAlgorithm alg;
+       
        /// <summary>
        /// //////////
        /// </summary>
