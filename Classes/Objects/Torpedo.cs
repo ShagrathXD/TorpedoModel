@@ -76,10 +76,16 @@ namespace TorpedoModel.Classes
         /// /////////////
         /// </summary>
 
-           public void GetTargetData(Target targ_)
+           public void GetTargetData(Target targ_)      //получить информацию о цели
            {
                targ = targ_;
            }
+
+           public void Algorithm()      //старт алгоритма торпеды
+           {
+               alg.Process;
+           }
+
 
      }
 }
