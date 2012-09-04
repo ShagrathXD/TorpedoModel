@@ -14,12 +14,16 @@ namespace TorpedoModel
         public const int d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
         
-        public Target targ = new Target();    
-        public Torpedo torp = new Torpedo();
-       
-        public TorpedoControlAlgorithm(Torpedo torpedo, Target target)
+        public Target targ = new Target();
+
+        public TorpedoControlAlgorithm()
+            {
+            }
+
+
+        public TorpedoControlAlgorithm(Target target)
         {
-            torp = torpedo;
+            
             targ = target;
         }
 

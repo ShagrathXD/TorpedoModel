@@ -9,6 +9,7 @@ namespace TorpedoModel.Classes
    public  class Torpedo
     {
        TorpedoControlAlgorithm alg;
+       Target targ;
        
        /// <summary>
        /// //////////
@@ -41,6 +42,8 @@ namespace TorpedoModel.Classes
            public Torpedo()     //инициализация всей торпеды
            {
                InitCoord(coord);
+               TorpedoControlAlgorithm alg_ = new TorpedoControlAlgorithm();
+               alg = alg_;
                /// <summary>
                /// /////////////
                /// </summary>  
@@ -72,5 +75,11 @@ namespace TorpedoModel.Classes
         /// <summary>
         /// /////////////
         /// </summary>
+
+           public void GetTargetData(Target targ_)
+           {
+               targ = targ_;
+           }
+
      }
 }
