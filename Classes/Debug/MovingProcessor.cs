@@ -11,25 +11,17 @@ namespace TorpedoModel
     public class MovingProcessor
     {
         public Torpedo torp;
-        Coordinates torpedoPosition;
         public Target targ;
 
-        Torpedo newTorp = new Torpedo(); //инициализация торпеды
         void AddTorpedo(Torpedo newTorp_)
         {
             torp = newTorp_;
         }
 
-        Coordinates torpCoord = new Coordinates(); //инициализация координат торпеды
-        void AddPosition(Coordinates torpCoord_)
-        {
-            torpedoPosition = torpCoord_;
-        }
-
-        Target target = new Target();   //инициализация цели
         void AddTarget(Target target_)
         {
             targ = target_;
+            torp.SetTargetData(target_);
         }
 
         public void SetInitData()   //установка начальных значений
@@ -37,30 +29,28 @@ namespace TorpedoModel
             torp.speed = 10;
             targ.distance = 1000;
             targ.isReceived = true;
-            torp.SetControlData(torp);
-            targ.SetTargetData(targ);
         }
 
         public void InitMovingProcessor() //инициализация всего процессора
         {   
-            AddTorpedo(newTorp);
-            AddPosition(torpCoord);
-            AddTarget(target);
+            AddTorpedo( new Torpedo(new Coordinates()));
+            AddTarget( new Target() );
             SetInitData();
         }
 
         public void MoveProcess()  //main     
         {
-            torp.GetSpeed(out torp.speed);  //получение значения скорости
+            var torp_speed = torp.GetSpeed();  //получение значения скорости
             if (targ.distance != 0)
             {
-                targ.distance = targ.distance - torp.speed;     //изменение значения дистанции
-                torpedoPosition.x = torpedoPosition.x + torp.speed;       //изменение координат
+                targ.distance = targ.distance - torp_speed;     //изменение значения дистанции
+                torp.coord.x = torp.coord.x + torp_speed;       //изменение координат
             }
             else
             {
                 Console.WriteLine("press key to finish");
                 Console.ReadKey();
-            }                       
+            }
+            torp.Algorithm();           
         }
 }}
