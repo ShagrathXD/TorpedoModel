@@ -23,9 +23,9 @@ namespace TorpedoModel.Classes.Objects
             rudderCourse = controlData.rudderCourse;
         }
 
-        public void GetSpeed(out double speed_)   //получить значение скорости
+        public double GetSpeed()   //получить значение скорости
         {
-            speed_ = speed;
+            return speed;
         }
     }
 }
