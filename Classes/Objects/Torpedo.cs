@@ -3,48 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TorpedoModel.Library.Geometry;
+using TorpedoModel.Interfaces;
 
 namespace TorpedoModel.Classes
 {
-   public  class Torpedo
+    public class Torpedo : IObjectControl
     {
        TorpedoControlAlgorithm alg;
-       Target targ;
-       
+       public Coordinates coord = new Coordinates();  //инициализация координат
+       public float speed;
+       Angle rudder = new Angle(0,0);
 
-           public Coordinates torpPosition; //координаты торпеды
+       public Torpedo(Coordinates coord_)     //инициализация всей торпеды
+       {
+           coord = coord_;
+           alg = new TorpedoControlAlgorithm(this);
+       }
 
-           public Coordinates coord = new Coordinates();  //инициализация координат
-           public void InitCoord(Coordinates coord_)
-           {
-               torpPosition = coord_;
-           }
+       public void SetTorpedoPosition(Coordinates torpedoPosition) //запись координат торпеды
+       {                   
+           coord = torpedoPosition;
+       }
 
+       public void SetTargetData(Target targ_)      //получить информацию о цели
+       {
+           alg.AddTarget(targ_);
+       }
 
-           public Torpedo()     //инициализация всей торпеды
-           {
-               InitCoord(coord);
-               TorpedoControlAlgorithm alg_ = new TorpedoControlAlgorithm();
-               alg = alg_;
-            }
+       public void Algorithm()      //старт алгоритма торпеды
+       {
+           alg.Process();
+       }
 
-           public void SetTorpedoPosition(Coordinates torpedoPosition) //запись координат торпеды
-           {                   
-               torpPosition = torpedoPosition;
-           }
+       public float GetSpeed()
+       {
+           return speed;
+       }
 
+       #region IObjectControl Members
 
+       public void SetRudderCourse(Angle angle)
+       {
+           rudder = angle;
+       }
 
-           public void GetTargetData(Target targ_)      //получить информацию о цели
-           {
-               targ = targ_;
-           }
+       public void SetSpeed(float speed_)
+       {
+           speed = speed_;
+       }
 
-           public void Algorithm()      //старт алгоритма торпеды
-           {
-               alg.Process;
-           }
+       public void SetEmitterMode(string mode)
+       {
+           //throw new NotImplementedException();
+       }
 
-
-     }
+       #endregion
+    }
 }
