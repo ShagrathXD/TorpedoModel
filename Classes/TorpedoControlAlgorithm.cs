@@ -31,7 +31,7 @@ namespace TorpedoModel
                 if (searchIsFirst_ == true)
                     FirstSearch();
                 else
-                    RepeatedSearch();
+                    RepeatedSearch1();
             }
         }
 
@@ -59,17 +59,63 @@ namespace TorpedoModel
             targ = t;
         }
 
-        public void FirstSearch()   //первичный поиск
+        public void FirstSearch()   //первичный поиск, П0
         {
-            searchIsFirst_ = false;
+   //         searchIsFirst_ = false;       //надо ли это?
         }
 
-        public void RepeatedSearch()  //повторный поиск
+        public void ContactVerification()   //подтверждение контакта, ПК
         {
         }
 
-        public void ContactVerification()   //подтверждение контакта
+        public void Convergence1()      //самонаведение СН1
         {
         }
+
+        public void Convergence2()      //самонаведение СН2
+        {
+        }
+
+        public void Convergence3()      //самонаведение СН3
+        {
+        }
+
+        public void Convergence4()      //самонаведение СН4
+        {
+        }
+
+        public void PrecursiveSearch1()     //предварительный поиск ПРП1
+        {
+        }
+
+        public void PrecursiveSearch2()     //предварительный поиск ПРП2
+        {
+        }
+
+        public void PrecursiveSearch3()     //предварительный поиск ПРП3
+        {
+        }
+
+        public void PrecursiveSearch4()     //предварительный поиск ПРП4
+        {
+        }
+
+        public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)
+        {
+        }
+
+        public void RepeatedSearch2()  //повторный поиск ПП2 
+        {
+        }
+
+        public void AnotherSearch()     //поиск другого объекта ПДО
+        {
+        }
+
+        public void Guidance()      //наведение НВ
+        {
+        }
+
+
     }
 }
