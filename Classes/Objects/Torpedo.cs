@@ -12,6 +12,7 @@ namespace TorpedoModel.Classes
        TorpedoControlAlgorithm alg;
        public Coordinates coord = new Coordinates();  //инициализация координат
        public float speed;
+       public float depth;          //глубина 
        Angle rudder = new Angle(0,0);
 
        public Torpedo(Coordinates coord_)     //инициализация всей торпеды
