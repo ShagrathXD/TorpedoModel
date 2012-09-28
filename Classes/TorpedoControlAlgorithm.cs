@@ -14,7 +14,8 @@ namespace TorpedoModel
         public const int d3_ = 500;  //дистанция, на которой длительность акустического цикла уменьшается в 4 раза, м
         public const int d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
-        
+        public int mode_ = 0;   //флаг режима
+
         public Target targ;
 
         public TorpedoControlAlgorithm(IObjectControl o)
@@ -24,44 +25,26 @@ namespace TorpedoModel
 
         public void Process()  //алгоритм
         {
-            if (targ.isReceived == true)
-                Convergence();
-            else
+            switch (mode_)  //переключение между режимами 
             {
-                if (searchIsFirst_ == true)
+                case 0:
                     FirstSearch();
-                else
-                    RepeatedSearch1();
-            }
+                    break;
+            }       
         }
 
 
-        public void Convergence()   //режим сближения
-        {
-            switch ((int)(targ.distance))
-            {
-                case (d4_):
-                    controlledObject.SetEmitterMode("C4");
-                    break;
-                case (d3_):
-                    controlledObject.SetEmitterMode("C3");
-                    break;
-                case (d2_):
-                    controlledObject.SetEmitterMode("C2");
-                    break;
-                default:
-                    break;
-            }
-        }
 
         public void AddTarget(Target t)
         {
             targ = t;
         }
 
-        public void FirstSearch()   //первичный поиск, П0
+
+
+
+        public void FirstSearch()   //первичный поиск
         {
-   //         searchIsFirst_ = false;       //надо ли это?
         }
 
         public void ContactVerification()   //подтверждение контакта, ПК
