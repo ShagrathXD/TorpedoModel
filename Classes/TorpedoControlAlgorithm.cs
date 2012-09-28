@@ -115,6 +115,22 @@ namespace TorpedoModel
 
         public void Convergence1()      //самонаведение СН1     (21)
         {
+            switch (targ.isReceived)
+            {                               
+                case true:  
+                    if (targ.distance > d2_)    //если дистанция до цели
+                    {                           //превышает d2, то
+                        //классификация цели
+                    }
+                    else
+                    {                       
+                        mode_ = 22;     //если нет - переход к режиму СН2
+                    }
+                    break;
+                case false:         //если сигнала нет, 
+                    mode_ = 31;     //переход к редиму ПРП1
+                    break;
+            }
         }
 
         public void Convergence2()      //самонаведение СН2     (22)
