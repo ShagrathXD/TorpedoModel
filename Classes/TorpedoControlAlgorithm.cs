@@ -34,6 +34,42 @@ namespace TorpedoModel
                 case 1:
                     ContactVerification();
                     break;
+                case 21:
+                    Convergence1();
+                    break;
+                case 22:
+                    Convergence2();
+                    break;
+                case 23:
+                    Convergence3();
+                    break;
+                case 24:
+                    Convergence4();
+                    break;
+                case 31:
+                    PrecursiveSearch1();
+                    break;
+                case 32:
+                    PrecursiveSearch2();
+                    break;
+                case 33:
+                    PrecursiveSearch3();
+                    break;
+                case 34:
+                    PrecursiveSearch4();
+                    break;
+                case 41:
+                    RepeatedSearch1();
+                    break;
+                case 42:
+                    RepeatedSearch2();
+                    break;
+                case 5:
+                    AnotherSearch();
+                    break;
+                case 6:
+                    Guidance();
+                    break;
             }       
         }
 
@@ -77,51 +113,51 @@ namespace TorpedoModel
             }
         }
 
-        public void Convergence1()      //самонаведение СН1     (2)
+        public void Convergence1()      //самонаведение СН1     (21)
         {
         }
 
-        public void Convergence2()      //самонаведение СН2
+        public void Convergence2()      //самонаведение СН2     (22)
         {
         }
 
-        public void Convergence3()      //самонаведение СН3
+        public void Convergence3()      //самонаведение СН3     (23)
         {
         }
 
-        public void Convergence4()      //самонаведение СН4
+        public void Convergence4()      //самонаведение СН4     (24)
         {
         }
 
-        public void PrecursiveSearch1()     //предварительный поиск ПРП1
+        public void PrecursiveSearch1()     //предварительный поиск ПРП1    (31)
         {
         }
 
-        public void PrecursiveSearch2()     //предварительный поиск ПРП2
+        public void PrecursiveSearch2()     //предварительный поиск ПРП2    (32)
         {
         }
 
-        public void PrecursiveSearch3()     //предварительный поиск ПРП3
+        public void PrecursiveSearch3()     //предварительный поиск ПРП3    (33)
         {
         }
 
-        public void PrecursiveSearch4()     //предварительный поиск ПРП4
+        public void PrecursiveSearch4()     //предварительный поиск ПРП4    (34)
         {
         }
 
-        public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)
+        public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (41)
         {
         }
 
-        public void RepeatedSearch2()  //повторный поиск ПП2 
+        public void RepeatedSearch2()  //повторный поиск ПП2                (42)
         {
         }
 
-        public void AnotherSearch()     //поиск другого объекта ПДО
+        public void AnotherSearch()     //поиск другого объекта ПДО         (5)
         {
         }
 
-        public void Guidance()      //наведение НВ
+        public void Guidance()      //наведение НВ                          (6)
         {
         }
 
