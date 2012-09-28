@@ -15,7 +15,8 @@ namespace TorpedoModel
         public const int d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
         public int mode_ = 0;   //флаг режима
-
+        public int k_ = 0;       //служебная переменная 
+        
         public Target targ;
 
         public TorpedoControlAlgorithm(IObjectControl o)
@@ -30,6 +31,9 @@ namespace TorpedoModel
                 case 0:
                     FirstSearch();
                     break;
+                case 1:
+                    ContactVerification();
+                    break;
             }       
         }
 
@@ -43,15 +47,37 @@ namespace TorpedoModel
 
 
 
-        public void FirstSearch()   //первичный поиск
+        public void FirstSearch()   //первичный поиск (0)
         {
+            if (targ.isReceived = true) //если принят сигнал, то
+                mode_ = 1;              //переход к ПК
         }
 
-        public void ContactVerification()   //подтверждение контакта, ПК
+        public void ContactVerification()   //подтверждение контакта, ПК  (1)
         {
+            switch (targ.isReceived)     
+            {
+                case true:             //если сигнал получен
+                    switch (k_)     
+                    {
+                        case 2:         // 2 раза поддряд, то
+                            mode_ = 2;  //переход в режим СН1
+                            k_ = 0;     //сброс счетчика
+                            break;
+                        default:        //если нет, то 
+                            k_++;       //счетчик + 1  
+                            break;
+                    }
+                    break;
+                    
+                case false:         //если сигнал не получен, то
+                    mode_ = 0;      //возврат к первичному поиску
+                    k_ = 0;         //и сброс счетчика
+                    break;
+            }
         }
 
-        public void Convergence1()      //самонаведение СН1
+        public void Convergence1()      //самонаведение СН1     (2)
         {
         }
 
