@@ -91,6 +91,10 @@ namespace TorpedoModel
 
         public void ContactVerification()   //подтверждение контакта, ПК  (1)
         {
+            // if (превышение порога)
+            //     mode_ = 6; //переход в режим наведения
+            // else
+            // {
             switch (targ.isReceived)     
             {
                 case true:             //если сигнал получен
@@ -111,6 +115,7 @@ namespace TorpedoModel
                     k_ = 0;         //и сброс счетчика
                     break;
             }
+            // }
         }
 
         public void Convergence1()      //самонаведение СН1     (21)
