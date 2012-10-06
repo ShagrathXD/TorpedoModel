@@ -126,7 +126,6 @@ namespace TorpedoModel
                 case true:  
                     if (targ.distance > d2_)    //если дистанция до цели
                     {                           //превышает d2, то
-                        //классификация цели
                     }
                     else
                     {
@@ -224,7 +223,7 @@ namespace TorpedoModel
         {
         }
 
-        public void Classification()        //классификация цели
+        public void Classification(Target t_)        //классификация цели
         {
             //по результатам классификации,
             targ.isTrue = true; //если цель настоящая, или
