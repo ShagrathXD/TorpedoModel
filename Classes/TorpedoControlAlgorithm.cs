@@ -16,6 +16,7 @@ namespace TorpedoModel
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
         public int mode_ = 0;   //флаг режима
         public int k_ = 0;       //служебная переменная 
+        enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
         
         public Target targ;
 
@@ -86,7 +87,7 @@ namespace TorpedoModel
         public void FirstSearch()   //первичный поиск (0)
         {
             if (targ.isReceived = true) //если принят сигнал, то
-                mode_ = 1;              //переход к ПК
+                mode_ =(int)Modes.CV ;              //переход к ПК
         }
 
         public void ContactVerification()   //подтверждение контакта, ПК  (1)
@@ -101,7 +102,7 @@ namespace TorpedoModel
                     switch (k_)     
                     {
                         case 2:         // 2 раза поддряд, то
-                            mode_ = 2;  //переход в режим СН1
+                            mode_ = (int)Modes.Con1;  //переход в режим СН1
                             k_ = 0;     //сброс счетчика
                             break;
                         default:        //если нет, то 
@@ -111,7 +112,7 @@ namespace TorpedoModel
                     break;
                     
                 case false:         //если сигнал не получен, то
-                    mode_ = 0;      //возврат к первичному поиску
+                    mode_ = (int)Modes.CV;      //возврат к первичному поиску
                     k_ = 0;         //и сброс счетчика
                     break;
             }
@@ -129,11 +130,11 @@ namespace TorpedoModel
                     }
                     else
                     {                       
-                        mode_ = 22;     //если нет - переход к режиму СН2
+                        mode_ = (int)Modes.Con2;     //если нет - переход к режиму СН2
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ = 31;     //переход к редиму ПРП1
+                    mode_ =(int) Modes.PS1;     //переход к редиму ПРП1
                     break;
             }
         }
