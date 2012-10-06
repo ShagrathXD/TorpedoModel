@@ -134,7 +134,7 @@ namespace TorpedoModel
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ =(int) Modes.PS1;     //переход к редиму ПРП1
+                    mode_ =(int) Modes.PS1;     //переход к режиму ПРП1
                     break;
             }
         }
@@ -154,7 +154,7 @@ namespace TorpedoModel
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ = (int)Modes.PS2;     //переход к редиму ПРП2
+                    mode_ = (int)Modes.PS2;     //переход к режиму ПРП2
                     break;
             }
         }
@@ -174,7 +174,7 @@ namespace TorpedoModel
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ = (int)Modes.PS3;     //переход к редиму ПРП3
+                    mode_ = (int)Modes.PS3;     //переход к режиму ПРП3
                     break;
             }
         }
@@ -184,10 +184,10 @@ namespace TorpedoModel
             switch (targ.isReceived)
             {
                 case true:                      //если сигнал есть,
-                    mode_ = (int)Modes.G;     //переход к редиму НВ
+                    mode_ = (int)Modes.G;     //переход к режиму НВ
                     break;
                 case false:                  //если сигнала нет, 
-                    mode_ = (int)Modes.PS4;     //переход к редиму ПРП4
+                    mode_ = (int)Modes.PS4;     //переход к режиму ПРП4
                     break;
             }
         }
