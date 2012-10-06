@@ -224,6 +224,12 @@ namespace TorpedoModel
         {
         }
 
+        public void Classification()        //классификация цели
+        {
+            //по результатам классификации,
+            targ.isTrue = true; //если цель настоящая, или
+            // targ.isTrue = false; //если цель ложная
+        }
 
     }
 }
