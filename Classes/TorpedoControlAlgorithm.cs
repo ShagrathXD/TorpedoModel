@@ -17,12 +17,12 @@ namespace TorpedoModel
         public int mode_ = 0;   //флаг режима
         public int k_ = 0;       //служебная переменная 
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
-        
+
         public Target targ;
 
         public TorpedoControlAlgorithm(IObjectControl o)
         {
-            controlledObject = o; 
+            controlledObject = o;
         }
 
         public void Process()  //алгоритм
@@ -71,7 +71,7 @@ namespace TorpedoModel
                 case 13:
                     Guidance();
                     break;
-            }       
+            }
         }
 
 
@@ -87,7 +87,7 @@ namespace TorpedoModel
         public void FirstSearch()   //первичный поиск (0)
         {
             if (targ.isReceived = true) //если принят сигнал, то
-                mode_ =(int)Modes.CV ;              //переход к ПК
+                mode_ = (int)Modes.CV;              //переход к ПК
         }
 
         public void ContactVerification()   //подтверждение контакта, ПК  (1)
@@ -96,10 +96,10 @@ namespace TorpedoModel
             //     mode_ = 6; //переход в режим наведения
             // else
             // {
-            switch (targ.isReceived)     
+            switch (targ.isReceived)
             {
                 case true:             //если сигнал получен
-                    switch (k_)     
+                    switch (k_)
                     {
                         case 2:         // 2 раза поддряд, то
                             mode_ = (int)Modes.Con1;  //переход в режим СН1
@@ -110,7 +110,7 @@ namespace TorpedoModel
                             break;
                     }
                     break;
-                    
+
                 case false:         //если сигнал не получен, то
                     mode_ = (int)Modes.CV;      //возврат к первичному поиску
                     k_ = 0;         //и сброс счетчика
@@ -122,18 +122,19 @@ namespace TorpedoModel
         public void Convergence1()      //самонаведение СН1     (2)
         {
             switch (targ.isReceived)
-            {                               
-                case true:  
-                    if (targ.distance > d2_)    //если дистанция до цели
-                    {                           //превышает d2, то
-                    }
-                    else
+            {
+                case true:
+                    if (targ.distance > d2_)    //если дистанция до цели превышает d2, то
                     {
-                        mode_ = (int)Modes.Con2;     //если дистанция меньше d2 - переход к режиму СН2
+                        Classification(targ);   //классификация цели                                 
+                    }
+                    else                     //если дистанция меньше d2, то
+                    {
+                        mode_ = (int)Modes.Con2;    //переход к режиму СН2
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ =(int) Modes.PS1;     //переход к режиму ПРП1
+                    mode_ = (int)Modes.PS1;     //переход к режиму ПРП1
                     break;
             }
         }
@@ -145,7 +146,7 @@ namespace TorpedoModel
                 case true:
                     if (targ.distance > d3_)    //если дистанция до цели
                     {                           //превышает d3, то
-                        //классификация цели
+                        Classification(targ);   //классификация цели   
                     }
                     else
                     {
@@ -165,7 +166,7 @@ namespace TorpedoModel
                 case true:
                     if (targ.distance > d4_)    //если дистанция до цели
                     {                           //превышает d4, то
-                        //классификация цели
+                        Classification(targ);   //классификация цели   
                     }
                     else
                     {
@@ -228,6 +229,11 @@ namespace TorpedoModel
             //по результатам классификации,
             targ.isTrue = true; //если цель настоящая, или
             // targ.isTrue = false; //если цель ложная
+
+            if (targ.isTrue = false)    //проверка на истинность по итогам классификации 
+            {                           //если цель ложная, то
+                mode_ = (int)Modes.AS;  //переход в режим ПДО
+            }
         }
 
     }
