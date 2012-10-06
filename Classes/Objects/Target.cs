@@ -10,5 +10,6 @@ namespace TorpedoModel.Classes
         public double distance = 99999;    //дистанция до цели
         public bool isReceived = false;      //наличие цели
         public Angle targetCourse = new Angle(0, 0);    //курс на цель
+        public bool isTrue = true; //цель настоящая/нет
     }
 }
