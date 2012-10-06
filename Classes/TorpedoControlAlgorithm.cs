@@ -35,40 +35,40 @@ namespace TorpedoModel
                 case 1:
                     ContactVerification();
                     break;
-                case 21:
+                case 2:
                     Convergence1();
                     break;
-                case 22:
+                case 3:
                     Convergence2();
                     break;
-                case 23:
+                case 4:
                     Convergence3();
                     break;
-                case 24:
+                case 5:
                     Convergence4();
                     break;
-                case 31:
+                case 6:
                     PrecursiveSearch1();
                     break;
-                case 32:
+                case 7:
                     PrecursiveSearch2();
                     break;
-                case 33:
+                case 8:
                     PrecursiveSearch3();
                     break;
-                case 34:
+                case 9:
                     PrecursiveSearch4();
                     break;
-                case 41:
+                case 10:
                     RepeatedSearch1();
                     break;
-                case 42:
+                case 11:
                     RepeatedSearch2();
                     break;
-                case 5:
+                case 12:
                     AnotherSearch();
                     break;
-                case 6:
+                case 13:
                     Guidance();
                     break;
             }       
