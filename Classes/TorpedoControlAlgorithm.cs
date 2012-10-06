@@ -119,7 +119,7 @@ namespace TorpedoModel
             // }
         }
 
-        public void Convergence1()      //самонаведение СН1     (21)
+        public void Convergence1()      //самонаведение СН1     (2)
         {
             switch (targ.isReceived)
             {                               
@@ -139,47 +139,47 @@ namespace TorpedoModel
             }
         }
 
-        public void Convergence2()      //самонаведение СН2     (22)
+        public void Convergence2()      //самонаведение СН2     (3)
         {
         }
 
-        public void Convergence3()      //самонаведение СН3     (23)
+        public void Convergence3()      //самонаведение СН3     (4)
         {
         }
 
-        public void Convergence4()      //самонаведение СН4     (24)
+        public void Convergence4()      //самонаведение СН4     (5)
         {
         }
 
-        public void PrecursiveSearch1()     //предварительный поиск ПРП1    (31)
+        public void PrecursiveSearch1()     //предварительный поиск ПРП1    (6)
         {
         }
 
-        public void PrecursiveSearch2()     //предварительный поиск ПРП2    (32)
+        public void PrecursiveSearch2()     //предварительный поиск ПРП2    (7)
         {
         }
 
-        public void PrecursiveSearch3()     //предварительный поиск ПРП3    (33)
+        public void PrecursiveSearch3()     //предварительный поиск ПРП3    (8)
         {
         }
 
-        public void PrecursiveSearch4()     //предварительный поиск ПРП4    (34)
+        public void PrecursiveSearch4()     //предварительный поиск ПРП4    (9)
         {
         }
 
-        public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (41)
+        public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (10)
         {
         }
 
-        public void RepeatedSearch2()  //повторный поиск ПП2                (42)
+        public void RepeatedSearch2()  //повторный поиск ПП2                (11)
         {
         }
 
-        public void AnotherSearch()     //поиск другого объекта ПДО         (5)
+        public void AnotherSearch()     //поиск другого объекта ПДО         (12)
         {
         }
 
-        public void Guidance()      //наведение НВ                          (6)
+        public void Guidance()      //наведение НВ                          (13)
         {
         }
 
