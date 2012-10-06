@@ -181,7 +181,15 @@ namespace TorpedoModel
 
         public void Convergence4()      //самонаведение СН4     (5)
         {
-
+            switch (targ.isReceived)
+            {
+                case true:                      //если сигнал есть,
+                    mode_ = (int)Modes.G;     //переход к редиму НВ
+                    break;
+                case false:                  //если сигнала нет, 
+                    mode_ = (int)Modes.PS4;     //переход к редиму ПРП4
+                    break;
+            }
         }
 
         public void PrecursiveSearch1()     //предварительный поиск ПРП1    (6)
