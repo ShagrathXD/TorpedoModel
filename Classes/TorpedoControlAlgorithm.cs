@@ -129,8 +129,8 @@ namespace TorpedoModel
                         //классификация цели
                     }
                     else
-                    {                       
-                        mode_ = (int)Modes.Con2;     //если нет - переход к режиму СН2
+                    {
+                        mode_ = (int)Modes.Con2;     //если дистанция меньше d2 - переход к режиму СН2
                     }
                     break;
                 case false:         //если сигнала нет, 
@@ -141,6 +141,22 @@ namespace TorpedoModel
 
         public void Convergence2()      //самонаведение СН2     (3)
         {
+            switch (targ.isReceived)
+            {
+                case true:
+                    if (targ.distance > d3_)    //если дистанция до цели
+                    {                           //превышает d3, то
+                        //классификация цели
+                    }
+                    else
+                    {
+                        mode_ = (int)Modes.Con3;     //если дистанция меньше d3 - переход к режиму СН2
+                    }
+                    break;
+                case false:         //если сигнала нет, 
+                    mode_ = (int)Modes.PS2;     //переход к редиму ПРП2
+                    break;
+            }
         }
 
         public void Convergence3()      //самонаведение СН3     (4)
