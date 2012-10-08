@@ -82,7 +82,7 @@ namespace TorpedoModel
         }
 
 
-
+        #region Modes (parts of algorithm)
 
         public void FirstSearch()   //первичный поиск (0)
         {
@@ -267,6 +267,8 @@ namespace TorpedoModel
         {
         }
 
+        #endregion
+        
         public void Classification(Target t_)        //классификация цели
         {
             //по результатам классификации,
