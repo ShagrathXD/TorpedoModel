@@ -9,6 +9,7 @@ namespace TorpedoModel.Classes.Objects
         public double speed = 0;  //скорость торпеды
         public string emitterMode = "C1";   //режим излучения
         public Angle rudderCourse; //углы поворота рулей
+        public bool cockedMode = false; //установка боевого взвода
         
         public Angle rudder = new Angle(0, 0); //инициализация руля
         public void InitRudder(Angle rudder_)
