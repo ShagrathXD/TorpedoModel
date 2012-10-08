@@ -10,6 +10,7 @@ namespace TorpedoModel.Classes
     public class Torpedo // : IObjectControl
     {
        TorpedoControlAlgorithm alg;
+       IObjectControl obj;  //объект управления
        public Coordinates coord = new Coordinates();  //инициализация координат
        public float speed;
        public float depth;          //глубина 
@@ -17,8 +18,10 @@ namespace TorpedoModel.Classes
 
        public Torpedo(Coordinates coord_)     //инициализация всей торпеды
        {
+           ObjectControl obj_ = new ObjectControl(); //создание нового объекта управления
+           obj = obj_;                               //создание нового объекта управления    
            coord = coord_;
-           alg = new TorpedoControlAlgorithm(this);
+           alg = new TorpedoControlAlgorithm(obj);  //передача объекта управления в алгоритм
        }
 
        public void SetTorpedoPosition(Coordinates torpedoPosition) //запись координат торпеды
