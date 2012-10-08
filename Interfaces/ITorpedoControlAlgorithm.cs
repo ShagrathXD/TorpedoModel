@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TorpedoModel.Interfaces
 {
-    interface ITorpedoControlAlgorithm
+    interface ITorpedoControlAlgorithm      //интерфейс, по которому в алгоритм пересылаются данные
     {
         void SetTargetSignalReceived(bool isReceived);//сигнализация о том, получен сигнал от цели или нет
         void SetTargetCourse(Classes.Angle angle);//Направление на цель

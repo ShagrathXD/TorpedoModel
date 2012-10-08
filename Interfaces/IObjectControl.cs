@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TorpedoModel.Interfaces
 {
-    public interface IObjectControl
+    public interface IObjectControl     //интерфейс, по которому алгоритм управляет торпедой
     {
         void SetRudderCourse(Classes.Angle angle); 
         void SetSpeed(float speed);
