@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorpedoModel.Interfaces;
 
-namespace TorpedoModel.Classes.Objects
+namespace TorpedoModel.Classes
 {
-    public class ObjectControl
+    public class ObjectControl : IObjectControl
     {
         public double speed = 0;  //скорость торпеды
         public string emitterMode = "C1";   //режим излучения
@@ -28,5 +29,49 @@ namespace TorpedoModel.Classes.Objects
         {
             return speed;
         }
+
+        #region IObjectControl Members
+
+        public void SetHorizontalRotationVelocity(float newSpeed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetVerticalRotationVelocity(float newSpeed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetEnginePower(float speed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCockedMode(bool on)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSignalLength(float length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetProbeLength(float length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EmmitSignalAndStartEchoWaiting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StopEchoWaiting()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
