@@ -60,3 +60,18 @@ void SetProbeLength(float length);
     
 ********************************************
 ********************************************
+
+Интерфейс, по которому поступают данные в алгоритм:
+
+1. название у меня - ITorpedoControlAlgorithm
+
+2. void SetTargetInformation(Course peleng, float distance, Course targetCourse, float targetSpeed);
+понравилась идея передачи всех параметров одной функцией, скопировал к себе; Course переименовал в Angle
+
+3. void Process(float currentTime);
+не совсем понял, зачем при запуске передавать в алгорит текущее время, его ведь можно запросить по мере необходимости
+
+4. добавил void SetTargetSignalReceived(bool isReceived);
+
+5. void SetSignalAmplitude(float signalAmp); //уровень амплитуды сигнала
+добавил, т.к. в режиме СН1 возможно немедленное самонаведение при превышении амплитуды сигнала порогового значения
