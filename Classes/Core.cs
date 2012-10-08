@@ -19,7 +19,7 @@ namespace TorpedoModel
         {
             MovingProcessor move_ = new MovingProcessor(); 
             move = move_;
-            move.InitMovingProcessor();
+            move.CreateObjects();
             Console.WriteLine("init move proc ok");
             while (!stop_)  
             {

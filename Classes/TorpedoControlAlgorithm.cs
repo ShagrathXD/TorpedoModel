@@ -29,6 +29,7 @@ namespace TorpedoModel
 
         public void Process()  //алгоритм
         {
+            
             switch (mode_)  //переключение между режимами 
             {
                 case 0:
