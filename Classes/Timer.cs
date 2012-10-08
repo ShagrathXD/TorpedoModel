@@ -5,9 +5,13 @@ using System.Text;
 namespace TorpedoModel.Classes
 {
  public class Timer     //системный таймер
-        {
-            
+        {          
             private static double time_;
+
+            public Timer()
+            {
+                Reset();
+            }
 
             public static void Reset()	  //обнуление
             {
