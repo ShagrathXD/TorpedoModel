@@ -20,7 +20,7 @@ namespace TorpedoModel.Classes
        {
            obj = obj_;                               //создание нового объекта управления    
            coord = coord_;
-           alg = new TorpedoControlAlgorithm(obj);  //передача объекта управления в алгоритм
+           alg = new TorpedoControlAlgorithm(obj, new Target());  //передача объекта управления и цели в алгоритм 
        }
 
        public void SetTorpedoPosition(Coordinates torpedoPosition) //запись координат торпеды
@@ -28,13 +28,9 @@ namespace TorpedoModel.Classes
            coord = torpedoPosition;
        }
 
-       public void SetTargetData(Target targ_)      //получить информацию о цели
+       public void Algorithm(Angle targPeleng_, float targDistance_, Angle targCourse_, float targSpeed_)      //старт алгоритма торпеды
        {
-           alg.AddTarget(targ_);
-       }
-
-       public void Algorithm()      //старт алгоритма торпеды
-       {
+           alg.SetTargetInformation(targPeleng_, targDistance_, targCourse_, targSpeed_);
            alg.Process();
        }
 

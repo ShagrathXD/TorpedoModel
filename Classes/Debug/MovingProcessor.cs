@@ -31,7 +31,7 @@ namespace TorpedoModel
 
         public void MoveProcess()  //main     
         {
-            torp.Algorithm();       //запуск алгоритма
+            torp.Algorithm(targ.peleng, targ.distance, targ.course, targ.speed);       //запуск алгоритма
             targ.distance = targ.distance - torp.GetSpeed();     //изменение значения дистанции
             torp.coord.x = torp.coord.x + torp.GetSpeed();       //изменение координат
         }
