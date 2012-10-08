@@ -218,9 +218,18 @@ namespace TorpedoModel
 
         public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (10)
         {
+            switch (targ.isReceived)
+            {
+                case true:                //если есть сигнал, то
+                    mode_ = Modes.Con2;   //переход в режим СН2
+                    break;
+                case false:               //если нет, то
+                    // циркуляция
+                    break;
+            }
         }
 
-        public void RepeatedSearch2()  //повторный поиск ПП2                (11)
+        public void RepeatedSearch2()  //повторный поиск ПП2  (дальний)              (11)
         {
             switch (targ.isReceived)
             {
