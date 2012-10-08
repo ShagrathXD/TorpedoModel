@@ -58,6 +58,10 @@ namespace TorpedoModel.Classes
            //throw new NotImplementedException();
        }
 
+       public void SetCockedMode(bool mode)
+       {
+       }
+
        #endregion
     }
 }
