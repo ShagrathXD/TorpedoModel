@@ -195,25 +195,25 @@ namespace TorpedoModel
         public void PrecursiveSearch1()     //предварительный поиск ПРП1    (6)
         {
             //предварительный поиск  
-            mode_ = Modes.RS2;  //переход к режиму ПП2
+            mode_ = (int)Modes.RS2;  //переход к режиму ПП2
         }
 
         public void PrecursiveSearch2()     //предварительный поиск ПРП2    (7)
         {
             //предварительный поиск  
-            mode_ = Modes.RS1;  //переход к режиму ПП1
+            mode_ = (int)Modes.RS1;  //переход к режиму ПП1
         }
 
         public void PrecursiveSearch3()     //предварительный поиск ПРП3    (8)
         {
             //предварительный поиск  
-            mode_ = Modes.RS1;  //переход к режиму ПП1
+            mode_ = (int)Modes.RS1;  //переход к режиму ПП1
         }
 
         public void PrecursiveSearch4()     //предварительный поиск ПРП4    (9)
         {
             //предварительный поиск  
-            mode_ = Modes.RS1;  //переход к режиму ПП1
+            mode_ = (int)Modes.RS1;  //переход к режиму ПП1
         }
 
         public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (10)
@@ -221,7 +221,7 @@ namespace TorpedoModel
             switch (targ.isReceived)
             {
                 case true:                //если есть сигнал, то
-                    mode_ = Modes.Con2;   //переход в режим СН2
+                    mode_ = (int)Modes.Con2;   //переход в режим СН2
                     break;
                 case false:               //если нет, то
                     // циркуляция
@@ -234,7 +234,7 @@ namespace TorpedoModel
             switch (targ.isReceived)
             {
                 case true:                //если есть сигнал, то
-                    mode_ = Modes.Con1;   //переход в режим СН1
+                    mode_ = (int)Modes.Con1;   //переход в режим СН1
                     break;
                 case false:               //если нет, то
                     // циркуляция
@@ -255,8 +255,8 @@ namespace TorpedoModel
                     break;
                 case 1:                 
                     if (targ.isClassified = false)  //если цель не классифицирована, тогда
-                    {   
-                        mode_ = Modes.CV;           //переход в режим ПК
+                    {
+                        mode_ = (int)Modes.CV;           //переход в режим ПК
                         k_ = 0;                     //обнуление флага k_
                     }
                     break;
