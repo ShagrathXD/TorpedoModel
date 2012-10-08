@@ -15,9 +15,11 @@ namespace TorpedoModel
         public const int d2_ = 700; //дистанция, на которой режим излучения меняется с "С1" на "С2"
         public const int d3_ = 500;  //дистанция, на которой длительность акустического цикла уменьшается в 4 раза, м
         public const int d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
+        
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
+        public int k_ = 0;       //служебная переменная
+
         public int mode_ = 0;   //флаг режима
-        public int k_ = 0;       //служебная переменная 
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
         
         public TorpedoControlAlgorithm(IObjectControl o, Target t)
@@ -263,6 +265,7 @@ namespace TorpedoModel
 
         public void Guidance()      //наведение НВ                          (13)
         {
+            obj.SetCockedMode(true);        //установка боевого взвода
         }
 
         #endregion
