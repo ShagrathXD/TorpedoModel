@@ -10,11 +10,10 @@ namespace TorpedoModel.Classes
     public class Torpedo // : IObjectControl
     {
        TorpedoControlAlgorithm alg;
-       IObjectControl obj;  //объект управления
+       public ObjectControl obj;  //объект управления
        public Coordinates coord = new Coordinates();  //инициализация координат
-       public float speed;
-       public float depth;          //глубина 
-       Angle rudder = new Angle(0,0);
+       public float depth;          //глубина торпеды
+
 
        public Torpedo(Coordinates coord_, ObjectControl obj_)     //инициализация всей торпеды
        {
@@ -34,9 +33,9 @@ namespace TorpedoModel.Classes
            alg.Process();
        }
 
-       public float GetSpeed()
+       public float GetSpeed()      //возврат значения скорости торпеды
        {
-           return speed;
+           return obj.EnginePower;
        }
 
        #region IObjectControl Members
