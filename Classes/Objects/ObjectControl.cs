@@ -16,12 +16,6 @@ namespace TorpedoModel.Classes
             speed = 0;
         }
 
-        public void SetControlData(ObjectControl controlData)  //установка параметров управления
-        {
-            speed = controlData.speed;
-            emitterMode = controlData.emitterMode;
-            rudderCourse = controlData.rudderCourse;
-        }
 
         public double GetSpeed()   //получить значение скорости
         {
