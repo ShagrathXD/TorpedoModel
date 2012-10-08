@@ -7,20 +7,23 @@ namespace TorpedoModel.Classes
 {
     public class ObjectControl : IObjectControl
     {
-        float speed;  //скорость торпеды
+        float HorizontalRotationVelocity;
+        float VerticalRotationVelocity;
+        public float EnginePower;  //скорость торпеды
+
+        float SignalLength; //длительность зондирующего импульса
+        float ProbeLength;  //длительность приода зондирования(время ожидания эхо-сигнала)
+
+
         bool cockedMode = false; //установка боевого взвода
 
 
         public ObjectControl()  //конструктор для объекта управления
         {
-            speed = 0;
+            EnginePower = 0;
         }
 
 
-        public double GetSpeed()   //получить значение скорости
-        {
-            return speed;
-        }
 
         #region IObjectControl Members
 
