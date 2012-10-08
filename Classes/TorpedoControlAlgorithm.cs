@@ -195,25 +195,25 @@ namespace TorpedoModel
         public void PrecursiveSearch1()     //предварительный поиск ПРП1    (6)
         {
             //предварительный поиск  
-            mode_ = Modes.RS1;  //переход к режиму ПП1
+            mode_ = Modes.RS2;  //переход к режиму ПП2
         }
 
         public void PrecursiveSearch2()     //предварительный поиск ПРП2    (7)
         {
             //предварительный поиск  
-            mode_ = Modes.RS2;  //переход к режиму ПП2
+            mode_ = Modes.RS1;  //переход к режиму ПП1
         }
 
         public void PrecursiveSearch3()     //предварительный поиск ПРП3    (8)
         {
             //предварительный поиск  
-            mode_ = Modes.RS2;  //переход к режиму ПП2
+            mode_ = Modes.RS1;  //переход к режиму ПП1
         }
 
         public void PrecursiveSearch4()     //предварительный поиск ПРП4    (9)
         {
             //предварительный поиск  
-            mode_ = Modes.RS2;  //переход к режиму ПП2
+            mode_ = Modes.RS1;  //переход к режиму ПП1
         }
 
         public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (10)
