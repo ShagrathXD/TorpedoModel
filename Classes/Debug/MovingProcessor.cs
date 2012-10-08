@@ -10,47 +10,30 @@ namespace TorpedoModel
 {
     public class MovingProcessor
     {
-        public Torpedo torp;
-        public Target targ;
+        Torpedo torp;   //торпеда   
+        Target targ;    //цель
 
-        void AddTorpedo(Torpedo newTorp_)
+        void AddTorpedo(Torpedo newTorp)   //добавить новую торпеду
         {
-            torp = newTorp_;
+            torp = newTorp;
         }
 
-        void AddTarget(Target target_)
+        void AddTarget(Target newTarget)    //добавить новую цель
         {
-            targ = target_;
-            torp.SetTargetData(target_);
+            targ = newTarget;
         }
 
-        public void SetInitData()   //установка начальных значений
-        {
-            torp.speed = 10;
-            targ.distance = 1000;
-            targ.isReceived = true;
-        }
-
-        public void InitMovingProcessor() //инициализация всего процессора
+        public void CreateObjects() //создание начальных объектов
         {   
-            AddTorpedo( new Torpedo(new Coordinates()));
-            AddTarget( new Target() );
-            SetInitData();
+            AddTorpedo( new Torpedo(new Coordinates(), new ObjectControl()));  //создание торпеды с нулевыми координатами и нулевыми параметрами управления
+            AddTarget( new Target(new Angle(), 99999, new Angle(), 0)); //создание цели на дистанции 99999 с нулевыми углами курса/пеленга и нулевой скоростью 
         }
 
         public void MoveProcess()  //main     
         {
-            var torp_speed = torp.GetSpeed();  //получение значения скорости
-            if (targ.distance != 0)
-            {
-                targ.distance = targ.distance - torp_speed;     //изменение значения дистанции
-                torp.coord.x = torp.coord.x + torp_speed;       //изменение координат
-            }
-            else
-            {
-                Console.WriteLine("press key to finish");
-                Console.ReadKey();
-            }
-            torp.Algorithm();           
+            torp.Algorithm();       //запуск алгоритма
+            targ.distance = targ.distance - torp.GetSpeed();     //изменение значения дистанции
+            torp.coord.x = torp.coord.x + torp.GetSpeed();       //изменение координат
         }
-}}
+    }
+}
