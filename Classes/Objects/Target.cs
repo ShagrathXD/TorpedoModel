@@ -12,7 +12,7 @@ namespace TorpedoModel.Classes
         public Angle course;           //курс на цель
         public float speed;       //скорость цели
 
-        public bool isReceived = false;      //наличие сигнала от цели
+        public bool isReceived = true;      //наличие сигнала от цели
         public bool isTrue = true; //цель настоящая (да/нет)
         public bool isClassified = true; //цель однозначно классифицирована (да/нет)
 

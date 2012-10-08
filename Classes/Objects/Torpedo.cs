@@ -16,9 +16,8 @@ namespace TorpedoModel.Classes
        public float depth;          //глубина 
        Angle rudder = new Angle(0,0);
 
-       public Torpedo(Coordinates coord_)     //инициализация всей торпеды
+       public Torpedo(Coordinates coord_, ObjectControl obj_)     //инициализация всей торпеды
        {
-           ObjectControl obj_ = new ObjectControl(); //создание нового объекта управления
            obj = obj_;                               //создание нового объекта управления    
            coord = coord_;
            alg = new TorpedoControlAlgorithm(obj);  //передача объекта управления в алгоритм
