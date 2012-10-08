@@ -9,7 +9,9 @@ namespace TorpedoModel
 {
     public class TorpedoControlAlgorithm
     {
-        IObjectControl controlledObject;
+        IObjectControl obj;
+        Target targ;
+
         public const int d2_ = 700; //дистанция, на которой режим излучения меняется с "С1" на "С2"
         public const int d3_ = 500;  //дистанция, на которой длительность акустического цикла уменьшается в 4 раза, м
         public const int d4_ = 200;      //дистанция, на которой длительность зондирующего сигнала уменьшается в 2 раза, м
@@ -18,11 +20,11 @@ namespace TorpedoModel
         public int k_ = 0;       //служебная переменная 
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
 
-        public Target targ;
+
 
         public TorpedoControlAlgorithm(IObjectControl o)
         {
-            controlledObject = o;
+            obj = o;
         }
 
         public void Process()  //алгоритм
