@@ -84,3 +84,19 @@ void SetProbeLength(float length);
         void SetTargetSignalReceived(bool isReceived);//сигнализация о том, получен сигнал от цели или нет
         void SetSignalAmplitude(float signalAmp); //уровень амплитуды сигнала
     }
+    
+    
+********************************************
+********************************************
+    
+по IObjectControl: со всем согласен, только давай еще вставим в него функцию
+void SetWaitTime(float time); - длительность цикла ожидания эхо-сигнала. Мне это нужно чтобы правильно рисовать сектор, 
+в котором возможен захват цели.
+
+По ITorpedoControlAlgorithm:
+
+3. void Process(float currentTime);
+ок, давай без времент
+
+5. void SetSignalAmplitude(float signalAmp);
+Не нашел у себя пункт про мгновенное наведение. Вообще это невозможно, т.к. алгоритм работает не с амплитудами как таковыми, а с предварительно обработанными данными.
