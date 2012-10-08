@@ -7,7 +7,7 @@ using TorpedoModel.Interfaces;
 //алгоритм управления торпедой; принимает обработанную информацию о сигнале, и на ее основе подает сигналы управления на руль, двигатель и излучатель 
 namespace TorpedoModel
 {
-    public class TorpedoControlAlgorithm
+    public class TorpedoControlAlgorithm : ITorpedoControlAlgorithm
     {
         IObjectControl obj;
         Target targ;
@@ -29,7 +29,8 @@ namespace TorpedoModel
 
         public void Process()  //алгоритм
         {
-            
+
+            #region Switching_Between_Modes
             switch (mode_)  //переключение между режимами 
             {
                 case 0:
@@ -75,6 +76,7 @@ namespace TorpedoModel
                     Guidance();
                     break;
             }
+            #endregion
         }
 
 
@@ -284,5 +286,24 @@ namespace TorpedoModel
             }
         }
 
+
+        #region ITorpedoControlAlgorithm Members
+
+        public void SetTargetInformation(Angle peleng, float distance, Angle targetCourse, float targetSpeed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetTargetSignalReceived(bool isReceived)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSignalAmplitude(float signalAmp)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
