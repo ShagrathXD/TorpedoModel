@@ -7,7 +7,7 @@ using TorpedoModel.Interfaces;
 
 namespace TorpedoModel.Classes
 {
-    public class Torpedo : IObjectControl
+    public class Torpedo // : IObjectControl
     {
        TorpedoControlAlgorithm alg;
        public Coordinates coord = new Coordinates();  //инициализация координат
@@ -43,24 +43,24 @@ namespace TorpedoModel.Classes
 
        #region IObjectControl Members
 
-       public void SetRudderCourse(Angle angle)
-       {
-           rudder = angle;
-       }
+       // public void SetRudderCourse(Angle angle)
+       // {
+       //    rudder = angle;
+    //   }
 
-       public void SetSpeed(float speed_)
-       {
-           speed = speed_;
-       }
+ //      public void SetSpeed(float speed_)
+   //    {
+   //        speed = speed_;
+ //      }
 
-       public void SetEmitterMode(string mode)
-       {
+  //     public void SetEmitterMode(string mode)
+  //     {
            //throw new NotImplementedException();
-       }
+    //   }
 
-       public void SetCockedMode(bool mode)
-       {
-       }
+   //    public void SetCockedMode(bool mode)
+  //     {
+  //     }
 
        #endregion
     }
