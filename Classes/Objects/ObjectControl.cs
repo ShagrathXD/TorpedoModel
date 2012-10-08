@@ -7,15 +7,13 @@ namespace TorpedoModel.Classes
 {
     public class ObjectControl : IObjectControl
     {
-        public double speed = 0;  //скорость торпеды
-        public string emitterMode = "C1";   //режим излучения
-        public Angle rudderCourse; //углы поворота рулей
-        public bool cockedMode = false; //установка боевого взвода
-        
-        public Angle rudder = new Angle(0, 0); //инициализация руля
-        public void InitRudder(Angle rudder_)
+        float speed;  //скорость торпеды
+        bool cockedMode = false; //установка боевого взвода
+
+
+        public ObjectControl()  //конструктор для объекта управления
         {
-            rudderCourse = rudder_;
+            speed = 0;
         }
 
         public void SetControlData(ObjectControl controlData)  //установка параметров управления
