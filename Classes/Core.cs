@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using TorpedoModel.Classes;
 using TorpedoModel.Interfaces;
-using TorpedoModel.Classes.Objects;
 //ядро системы
 namespace TorpedoModel
 {
