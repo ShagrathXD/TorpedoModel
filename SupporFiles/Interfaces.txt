@@ -1,1 +1,23 @@
-﻿
+﻿Пришло время уточнить интерфейс, по которому я буду слать данные твоему 
+алгоритму, и по которому твой алгоритм будет управлять торпедой. Я предлагаю 
+вот такие варианты:
+
+public interface IAlgorithmControlledTorpedo
+{
+void SetHorizontalRotationVelocity(float newSpeed);
+void SetVerticalRotationVelocity(float newSpeed);
+void SetEnginePower(float speed); //установка скорости
+void SetCockedMode(bool on); //установка боевого взвода
+void SetSignalLength(float length);
+void EmmitSignalAndStartEchoWaiting();
+void StopEchoWaiting();
+}
+
+public interface ITorpedoAlgorithm
+{
+void SetTargetInformation(Course peleng, float distnce, Course targetCourse, 
+float targetSpeed);
+void Process(float currentTime);
+}
+
+ты как думаешь?
