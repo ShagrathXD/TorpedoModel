@@ -7,11 +7,11 @@ namespace TorpedoModel.Classes
 {
     public class Target
     {
-        Angle peleng;           //пеленг на цель
+        public Angle peleng;           //пеленг на цель
         public float distance;    //дистанция до цели
-        Angle course;           //курс на цель
+        public Angle course;           //курс на цель
         public float speed;       //скорость цели
-                
+
         public bool isReceived = false;      //наличие сигнала от цели
         public bool isTrue = true; //цель настоящая (да/нет)
         public bool isClassified = true; //цель однозначно классифицирована (да/нет)
@@ -37,5 +37,8 @@ namespace TorpedoModel.Classes
         }
 
         #endregion 
+
+
     }
 }
+
