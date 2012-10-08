@@ -41,7 +41,7 @@ namespace TorpedoModel.Classes
 
         public void SetCockedMode(bool on)
         {
-            throw new NotImplementedException();
+            cockedMode = on;
         }
 
         public void SetSignalLength(float length)
