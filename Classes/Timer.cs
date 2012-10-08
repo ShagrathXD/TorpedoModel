@@ -25,7 +25,11 @@ namespace TorpedoModel.Classes
             {
                 time = time_;
             }
-            
+            public void Count(float timeInterval_)
+            {
+                // таймер, начинающий свою работу при вызове и 
+                // заканчивающий через время timeInterval_
+            }
 
         }
         
