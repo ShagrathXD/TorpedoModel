@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TorpedoModel.Library;
+using TorpedoModel.Classes;
 
 namespace TorpedoModel.Interfaces
 {
-    interface ITorpedoControlAlgorithm      //интерфейс, по которому в алгоритм пересылаются данные
+    public interface ITorpedoControlAlgorithm      //интерфейс, по которому в алгоритм пересылаются данные
     {
+        void SetTargetInformation(Angle peleng, float distnce, Angle targetCourse, float targetSpeed);
+        void Process(); //Запустить работу алгоритма
         void SetTargetSignalReceived(bool isReceived);//сигнализация о том, получен сигнал от цели или нет
-        void SetTargetCourse(Classes.Angle angle);//Направление на цель
-        void SetTargetDistance(float distance);//Дистанция до цели
-        //Возможно что-то еще понадобится
-        //void Process(); //Запустить работу алгоритма
-        //void SetControlObject(IObjectControl object); //Передаем в алгоритм ссылку на управляемый объект
+        void SetSignalAmplitude(float signalAmp); //уровень амплитуды сигнала
     }
 }
