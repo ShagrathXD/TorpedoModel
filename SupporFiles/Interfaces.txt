@@ -1,23 +1,62 @@
-﻿Пришло время уточнить интерфейс, по которому я буду слать данные твоему 
-алгоритму, и по которому твой алгоритм будет управлять торпедой. Я предлагаю 
-вот такие варианты:
+﻿Пришло время уточнить интерфейс, по которому я буду слать данные твоему 
+алгоритму, и по которому твой алгоритм будет управлять торпедой. Я предлагаю вот такие варианты:
 
 public interface IAlgorithmControlledTorpedo
 {
-void SetHorizontalRotationVelocity(float newSpeed);
-void SetVerticalRotationVelocity(float newSpeed);
-void SetEnginePower(float speed); //установка скорости
-void SetCockedMode(bool on); //установка боевого взвода
-void SetSignalLength(float length);
-void EmmitSignalAndStartEchoWaiting();
-void StopEchoWaiting();
+	void SetHorizontalRotationVelocity(float newSpeed);
+	void SetVerticalRotationVelocity(float newSpeed);
+	void SetEnginePower(float speed); //установка скорости
+	void SetCockedMode(bool on); //установка боевого взвода
+	void SetSignalLength(float length);
+	void EmmitSignalAndStartEchoWaiting();
+	void StopEchoWaiting();
 }
 
 public interface ITorpedoAlgorithm
 {
-void SetTargetInformation(Course peleng, float distnce, Course targetCourse, 
-float targetSpeed);
-void Process(float currentTime);
+	void SetTargetInformation(Course peleng, float distnce, Course targetCourse, float targetSpeed);
+	void Process(float currentTime);
 }
 
 ты как думаешь?
+
+********************************************
+********************************************
+
+Начну с разбора интерфейса, по которому алгоритм управляет торпедой:
+
+1. у меня он называется IObjectControl.cs, нельзя ли оставить это название?
+
+2.  void SetHorizontalRotationVelocity(float newSpeed);
+	void SetVerticalRotationVelocity(float newSpeed);
+скопировал к себе. правильно ли я понял, что это угловые скорости циркуляции в плоскостях?
+
+3. 	void SetEnginePower(float speed); //установка скорости
+	void SetCockedMode(bool on); //установка боевого взвода
+    void SetSignalLength(float length);
+согласен, скопировал.
+
+4.  добавил длительность периода зондирования
+void SetProbeLength(float length);
+
+5.  void EmmitSignalAndStartEchoWaiting();
+	void StopEchoWaiting();
+скопировал к себе
+
+6.	таким образом получилось:
+
+    public interface IObjectControl     //интерфейс, по которому алгоритм управляет торпедой
+    {
+        void SetHorizontalRotationVelocity(float newSpeed); //скорость горизонтальной циркуляции
+        void SetVerticalRotationVelocity(float newSpeed);   //скорость вертикальной циркуляции
+        void SetEnginePower(float speed); //установка скорости
+        void SetCockedMode(bool on); //установка боевого взвода
+        void SetSignalLength(float length); //установка длительности излучения
+        void SetProbeLength(float length);  //установка периода зондирования (времени ожидания сигнала)
+        void EmmitSignalAndStartEchoWaiting(); //команда на излучение и ожидание сигнала
+        void StopEchoWaiting();     //команда на прекращение ожидания сигнала
+    }
+    
+    
+********************************************
+********************************************
