@@ -11,22 +11,25 @@ namespace TorpedoModel
     {
         private double step_ = 1;   //шаг системного таймера
         private bool stop_ = false;  //флаг остановки 
+
         MovingProcessor move;
-        ObjectControl obj; 
-        Timer timer = new Timer();
+        Timer time;
         
         public void Cycle() //цикл последовательно вызывает основные компоненты системы
         {
-            MovingProcessor move_ = new MovingProcessor(); 
-            move = move_;
-            move.CreateObjects();
-            Console.WriteLine("init move proc ok");
+            CreateBasicObjects(new MovingProcessor(), new Timer());
             while (!stop_)  
             {
                 move.MoveProcess();
-                timer.Increment(step_);             
+                time.Increment(step_);             
             }
-        }  
+        }
+
+        void CreateBasicObjects(MovingProcessor move_, Timer time_)
+        {
+            move = move_;
+            time = time_;
+        }
   }      
 }
 
