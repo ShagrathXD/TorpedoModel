@@ -19,17 +19,15 @@ namespace TorpedoModel
         public int mode_ = 0;   //флаг режима
         public int k_ = 0;       //служебная переменная 
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
-
-
-
-        public TorpedoControlAlgorithm(IObjectControl o)
+        
+        public TorpedoControlAlgorithm(IObjectControl o, Target t)
         {
             obj = o;
+            targ = t;
         }
 
         public void Process()  //алгоритм
         {
-
             #region Switching_Between_Modes
             switch (mode_)  //переключение между режимами 
             {
@@ -78,13 +76,8 @@ namespace TorpedoModel
             }
             #endregion
         }
+        
 
-
-
-        public void AddTarget(Target t)
-        {
-            targ = t;
-        }
 
 
         #region Modes (parts of algorithm)
@@ -291,19 +284,20 @@ namespace TorpedoModel
 
         public void SetTargetInformation(Angle peleng, float distance, Angle targetCourse, float targetSpeed)
         {
-            throw new NotImplementedException();
+            targ.peleng = peleng;
+            targ.distance = distance;
+            targ.course = targetCourse;
+            targ.speed = targetSpeed;
         }
 
         public void SetTargetSignalReceived(bool isReceived)
         {
-            throw new NotImplementedException();
+            targ.isReceived = isReceived;
         }
 
         public void SetSignalAmplitude(float signalAmp)
         {
-            throw new NotImplementedException();
         }
-
         #endregion
     }
 }
