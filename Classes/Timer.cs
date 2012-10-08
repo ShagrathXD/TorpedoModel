@@ -8,6 +8,9 @@ namespace TorpedoModel.Classes
         {          
             private static double time_;
 
+            float countIInterval;
+            bool timeIsOut; 
+
             public Timer()
             {
                 Reset();
@@ -25,7 +28,7 @@ namespace TorpedoModel.Classes
             {
                 time = time_;
             }
-            public void Count(float timeInterval_)
+            public void Count(float countInterval_)
             {
                 // таймер, начинающий свою работу при вызове и 
                 // заканчивающий через время timeInterval_
