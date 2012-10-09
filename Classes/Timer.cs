@@ -9,7 +9,8 @@ namespace TorpedoModel.Classes
         private static double time_;
 
         float countInterval;   //интервал работы обратного таймера 
-        bool timeIsOut;        //сообщает о том, что время истекло
+        bool timerIsWorking = false;    //сообщает о том, что работает таймер
+        bool timeIsOut = false;        //сообщает о том, что время истекло
 
         public Timer()      //конструктор 
         {
@@ -28,10 +29,14 @@ namespace TorpedoModel.Classes
         {
             time = time_;
         }
-        public void Count(float countInterval_)
+
+        public void StartCount(float countInterval_)   //установка таймера обратного отсчета на интервал countInterval_     
+        {                                                                   
+            timerIsWorking = true;   
+        }
+
+        public void CountProcess()          //непосредственно обратный отсчет
         {
-            // таймер, начинающий свою работу при вызове и 
-            // заканчивающий через время timeInterval_
         }
     }    
 }
