@@ -21,7 +21,7 @@ namespace TorpedoModel
             while (!stop_)  
             {
                 move.MoveProcess();
-                time.Increment(step_);             
+                time.Process(step_);             
             }
         }
 
