@@ -67,8 +67,8 @@
     <Compile Include="Library\Geometry\Angle.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SupporFiles\Comments.txt" />
     <Content Include="SupporFiles\Interfaces.txt" />
-    <Content Include="SupporFiles\ProjectDescription.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
