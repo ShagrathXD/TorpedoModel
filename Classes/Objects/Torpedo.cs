@@ -31,6 +31,7 @@ namespace TorpedoModel.Classes
        {
            alg.SetTargetInformation(targPeleng_, targDistance_, targCourse_, targSpeed_);
            alg.Process();
+           obj = alg.obj; //синхронизация
        }
 
        public float GetSpeed()      //возврат значения скорости торпеды
