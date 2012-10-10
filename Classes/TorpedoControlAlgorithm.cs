@@ -9,7 +9,7 @@ namespace TorpedoModel
 {
     public class TorpedoControlAlgorithm : ITorpedoControlAlgorithm
     {
-        IObjectControl obj;
+        public ObjectControl obj;
         Target targ;
 
         public const int d2_ = 700; //дистанция, на которой режим излучения меняется с "С1" на "С2"
@@ -21,11 +21,11 @@ namespace TorpedoModel
 
         public int mode_ = 0;   //флаг режима
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
-        
-        public TorpedoControlAlgorithm(IObjectControl o, Target t)
+
+        public TorpedoControlAlgorithm(Target t)
         {
-            obj = o;
-            targ = t;
+            obj = new ObjectControl();
+            targ = t;            
         }
 
         public void Process()  //алгоритм
@@ -78,7 +78,7 @@ namespace TorpedoModel
             }
             #endregion
         }
-        
+    
 
 
 
@@ -121,12 +121,13 @@ namespace TorpedoModel
 
         public void Convergence1()      //самонаведение СН1     (2)
         {
-            switch (targ.isReceived)
+
+            switch (targ.isReceived)    
             {
                 case true:
                     if (targ.distance > d2_)    //если дистанция до цели превышает d2, то
                     {
-                        Classification(targ);   //классификация цели                                 
+                        Classification(targ);   //классификация цели
                     }
                     else                     //если дистанция меньше d2, то
                     {

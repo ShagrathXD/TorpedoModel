@@ -23,7 +23,10 @@ namespace TorpedoModel.Classes
             EnginePower = 0;
         }
 
-
+        public float GetSpeed()      //возврат значения скорости торпеды
+        {
+            return EnginePower;
+        }
 
         #region IObjectControl Members
 
@@ -39,7 +42,7 @@ namespace TorpedoModel.Classes
 
         public void SetEnginePower(float speed)
         {
-            throw new NotImplementedException();
+            EnginePower = speed;
         }
 
         public void SetCockedMode(bool on)
