@@ -7,7 +7,7 @@ using TorpedoModel.Interfaces;
 //алгоритм управления торпедой; принимает обработанную информацию о сигнале, и на ее основе подает сигналы управления на руль, двигатель и излучатель 
 namespace TorpedoModel
 {
-    public class TorpedoControlAlgorithm : ITorpedoControlAlgorithm
+    public class TorpedoControlAlgorithm : ITorpedoControlAlgorithm, IObjectControl
     {
         public ObjectControl obj;
         Target targ;
@@ -18,6 +18,10 @@ namespace TorpedoModel
         
         private bool searchIsFirst_ = true;     //указатель того, что поиск первичный
         public int k_ = 0;       //служебная переменная
+
+        float speed;
+        float s1 = 42; //скорость самонаведения
+        float s2 = 28;
 
         public int mode_ = 0;   //флаг режима
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
@@ -121,21 +125,45 @@ namespace TorpedoModel
 
         public void Convergence1()      //самонаведение СН1     (2)
         {
-
+            speed = obj.EnginePower;
             switch (targ.isReceived)    
             {
                 case true:
                     if (targ.distance > d2_)    //если дистанция до цели превышает d2, то
                     {
                         Classification(targ);   //классификация цели
+                        if (speed < s1)
+                            obj.SetEnginePower(speed + (3 / 2));
+                        else
+                        {
+                            if (speed > s1)
+                                obj.SetEnginePower(s1);
+                            else
+                                break;        
+                        }
+                        obj.SetHorizontalRotationVelocity(0);
+                        obj.SetVerticalRotationVelocity(0);
                     }
-                    else                     //если дистанция меньше d2, то
+                    else                     //если дистанция меньше d2
                     {
-                        mode_ = (int)Modes.Con2;    //переход к режиму СН2
+                        
+                            mode_ = (int)Modes.Con2;    //переход к режиму СН2
+                                    
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ = (int)Modes.PS1;     //переход к режиму ПРП1
+                    if (speed = s2)     //если скорость = 28 узл, то 
+                        mode_ = (int)Modes.PS1;     //переход к режиму ПРП1
+                    else
+                    {
+                        if (speed > s2)
+                            obj.SetEnginePower(speed - (5 / 2));
+                        else
+                        {
+                            obj.SetEnginePower(s2);
+                            mode_ = (int)Modes.PS1;
+                        }
+                    }            
                     break;
             }
         }
@@ -147,7 +175,7 @@ namespace TorpedoModel
                 case true:
                     if (targ.distance > d3_)    //если дистанция до цели
                     {                           //превышает d3, то
-                        Classification(targ);   //классификация цели   
+                        Classification(targ);   //классификация цели
                     }
                     else
                     {
@@ -302,6 +330,50 @@ namespace TorpedoModel
         public void SetSignalAmplitude(float signalAmp)
         {
         }
+        #endregion
+
+        #region IObjectControl Members
+
+        public void SetHorizontalRotationVelocity(float newSpeed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetVerticalRotationVelocity(float newSpeed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetEnginePower(float speed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCockedMode(bool on)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSignalLength(float length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetProbeLength(float length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EmmitSignalAndStartEchoWaiting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StopEchoWaiting()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
