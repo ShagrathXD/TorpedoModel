@@ -314,7 +314,7 @@ namespace TorpedoModel
 
         #region ITorpedoControlAlgorithm Members
 
-        public void SetTargetInformation(Angle peleng, float distance, Angle targetCourse, float targetSpeed)
+        public void SetTargetInformation(Course peleng, float distance, Course targetCourse, float targetSpeed)
         {
             targ.peleng = peleng;
             targ.distance = distance;

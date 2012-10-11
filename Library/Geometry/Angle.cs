@@ -5,26 +5,26 @@ using System.Text;
 
 namespace TorpedoModel.Classes
 {
-    public class Angle                        
+    public class Course                        
     {
         public double Phi { get; set; }
         public double Tetha { get; set; }
 
-        public Angle()
+        public Course()
         {
             Phi = 0;
             Tetha = Math.Sin(Math.PI / 2);
         }
 
-        public Angle(double phi, double tetha)
+        public Course(double phi, double tetha)
         {
             Phi = phi;
             Tetha = tetha;
         }
 
-        public Angle FromDegreeToRad()
+        public Course FromDegreeToRad()
         {
-            return new Angle(Math.PI / 180 * Phi, Math.PI / 180 * Tetha);
+            return new Course(Math.PI / 180 * Phi, Math.PI / 180 * Tetha);
         }
     }
 }

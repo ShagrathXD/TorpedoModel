@@ -22,7 +22,7 @@ namespace TorpedoModel.Classes
        }
 
  
-       public void Algorithm(Angle targPeleng_, float targDistance_, Angle targCourse_, float targSpeed_)      //старт алгоритма торпеды
+       public void Algorithm(Course targPeleng_, float targDistance_, Course targCourse_, float targSpeed_)      //старт алгоритма торпеды
        {
            alg.SetTargetInformation(targPeleng_, targDistance_, targCourse_, targSpeed_);
            alg.Process();

@@ -23,7 +23,7 @@ namespace TorpedoModel
         public void CreateBasicObjects() //создание начальных объектов
         {
             AddTorpedo(new Torpedo(new Coordinates()));  //создание торпеды с нулевыми координатами и нулевыми параметрами управления
-            AddTarget(new Target(new Angle(), 99999, new Angle(), 0)); //создание цели на дистанции 99999 с нулевыми углами курса/пеленга и нулевой скоростью 
+            AddTarget(new Target(new Course(), 99999, new Course(), 0)); //создание цели на дистанции 99999 с нулевыми углами курса/пеленга и нулевой скоростью 
         }
 
         void AddTorpedo(Torpedo newTorp)   //добавить новую торпеду
