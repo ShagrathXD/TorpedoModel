@@ -11,14 +11,14 @@ namespace TorpedoModel.Classes
     public class Torpedo : ITorpedo 
     {
        TorpedoControlAlgorithm alg;
-       public Coordinates coord = new Coordinates();  //инициализация координат
+       public Coordinates coord;  //инициализация координат
        float depth_;          //глубина торпеды
 
 
        public Torpedo(Coordinates coord_)     //инициализация всей торпеды
        {
            coord = coord_;
-           alg = new TorpedoControlAlgorithm(new Target());  //передача объекта управления и цели в алгоритм 
+           alg = new TorpedoControlAlgorithm();  //передача объекта управления и цели в алгоритм 
        }
 
  

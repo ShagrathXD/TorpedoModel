@@ -10,7 +10,7 @@ namespace TorpedoModel
     public class TorpedoControlAlgorithm : ITorpedoControlAlgorithm, IObjectControl
     {
         public ObjectControl obj;
-        Target targ;
+        Target targ = new Target();
 
         public const int d2_ = 700; //дистанция, на которой режим излучения меняется с "С1" на "С2"
         public const int d3_ = 500;  //дистанция, на которой длительность акустического цикла уменьшается в 4 раза, м
@@ -26,10 +26,9 @@ namespace TorpedoModel
         public int mode_ = 0;   //флаг режима
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
 
-        public TorpedoControlAlgorithm(Target t)
+        public TorpedoControlAlgorithm()
         {
             obj = new ObjectControl();
-            targ = t;            
         }
 
         public void Process()  //алгоритм
@@ -299,13 +298,13 @@ namespace TorpedoModel
 
         #endregion
         
-        public void Classification(Target t_)        //классификация цели
+        public void Classification(Target target)        //классификация цели
         {
             //по результатам классификации,
-            targ.isTrue = true; //если цель настоящая, или
+            //targ.SetNotTrue(); //если цель настоящая, или
             // targ.isTrue = false; //если цель ложная
 
-            if (targ.isTrue = false)    //проверка на истинность по итогам классификации 
+            if (target.isTrue = false)    //проверка на истинность по итогам классификации 
             {                           //если цель ложная, то
                 mode_ = (int)Modes.AS;  //переход в режим ПДО
             }

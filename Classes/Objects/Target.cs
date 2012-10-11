@@ -36,8 +36,7 @@ namespace TorpedoModel.Classes
             peleng = peleng_;
         }
 
-        #endregion 
-
+        #endregion
 
     }
 }
