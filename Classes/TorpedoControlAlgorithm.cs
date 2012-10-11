@@ -125,7 +125,7 @@ namespace TorpedoModel
 
         public void Convergence1()      //самонаведение СН1     (2)
         {
-            speed = obj.EnginePower;
+            speed = obj.enginePower;
             switch (targ.isReceived)    
             {
                 case true:
@@ -152,7 +152,7 @@ namespace TorpedoModel
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    if (speed = s2)     //если скорость = 28 узл, то 
+                    if (speed == s2)     //если скорость = 28 узл, то 
                         mode_ = (int)Modes.PS1;     //переход к режиму ПРП1
                     else
                     {
