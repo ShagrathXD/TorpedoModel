@@ -7,67 +7,65 @@ namespace TorpedoModel.Classes
 {
     public class ObjectControl : IObjectControl
     {
-        float HorizontalRotationVelocity;
-        float VerticalRotationVelocity;
-        public float EnginePower;  //скорость торпеды
+        float horizontalRotationVelocity_;
+        float verticalRotationVelocity_;
+        public float enginePower;  //скорость торпеды
 
-        float SignalLength; //длительность зондирующего импульса
-        float ProbeLength;  //длительность приода зондирования(время ожидания эхо-сигнала)
+        float signalLength_; //длительность зондирующего импульса
+        float probeLength_;  //длительность приода зондирования(время ожидания эхо-сигнала)
 
 
-        bool cockedMode = false; //установка боевого взвода
+        bool cockedMode_ = false; //установка боевого взвода
 
 
         public ObjectControl()  //конструктор для объекта управления
         {
-            EnginePower = 0;
+            enginePower = 0;
         }
 
         public float GetSpeed()      //возврат значения скорости торпеды
         {
-            return EnginePower;
+            return enginePower;
         }
 
         #region IObjectControl Members
 
         public void SetHorizontalRotationVelocity(float newSpeed)
         {
-            throw new NotImplementedException();
+            horizontalRotationVelocity_ = newSpeed;
         }
 
         public void SetVerticalRotationVelocity(float newSpeed)
         {
-            throw new NotImplementedException();
+            verticalRotationVelocity_ = newSpeed;
         }
 
         public void SetEnginePower(float speed)
         {
-            EnginePower = speed;
+            enginePower = speed;
         }
 
         public void SetCockedMode(bool on)
         {
-            cockedMode = on;
+            cockedMode_ = on;
         }
 
         public void SetSignalLength(float length)
         {
-            throw new NotImplementedException();
+            signalLength_ = length;
         }
 
         public void SetProbeLength(float length)
         {
-            throw new NotImplementedException();
+            probeLength_ = length;
         }
 
         public void EmmitSignalAndStartEchoWaiting()
-        {
-            throw new NotImplementedException();
+        {            
         }
 
         public void StopEchoWaiting()
         {
-            throw new NotImplementedException();
         }
 
         #endregion
