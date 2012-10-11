@@ -23,9 +23,9 @@ namespace TorpedoModel
         float s1 = 42; //скорость самонаведения
         float s2 = 28;
 
-        public int mode_ = 0;   //флаг режима
         enum Modes { FS, CV, Con1, Con2, Con3, Con4, PS1, PS2, PS3, PS4, RS1, RS2, AS, G }; //перечисление всех режимов
-
+        Modes mode_ = Modes.FS;   //флаг режима
+        
         public TorpedoControlAlgorithm()
         {
             obj = new ObjectControl();
@@ -36,46 +36,46 @@ namespace TorpedoModel
             #region Switching_Between_Modes
             switch (mode_)  //переключение между режимами 
             {
-                case 0:
+                case Modes.FS:
                     FirstSearch();
                     break;
-                case 1:
+                case Modes.CV:
                     ContactVerification();
                     break;
-                case 2:
+                case Modes.Con1:
                     Convergence1();
                     break;
-                case 3:
+                case Modes.Con2:
                     Convergence2();
                     break;
-                case 4:
+                case Modes.Con3:
                     Convergence3();
                     break;
-                case 5:
+                case Modes.Con4:
                     Convergence4();
                     break;
-                case 6:
+                case Modes.PS1:
                     PrecursiveSearch1();
                     break;
-                case 7:
+                case Modes.PS2:
                     PrecursiveSearch2();
                     break;
-                case 8:
+                case Modes.PS3:
                     PrecursiveSearch3();
                     break;
-                case 9:
+                case Modes.PS4:
                     PrecursiveSearch4();
                     break;
-                case 10:
+                case Modes.RS1:
                     RepeatedSearch1();
                     break;
-                case 11:
+                case Modes.RS2:
                     RepeatedSearch2();
                     break;
-                case 12:
+                case Modes.AS:
                     AnotherSearch();
                     break;
-                case 13:
+                case Modes.G:
                     Guidance();
                     break;
             }
@@ -90,7 +90,7 @@ namespace TorpedoModel
         public void FirstSearch()   //первичный поиск (0)
         {
             if (targ.isReceived = true) //если принят сигнал, то
-                mode_ = (int)Modes.CV;              //переход к ПК
+                mode_ = Modes.CV;              //переход к ПК
         }
 
         public void ContactVerification()   //подтверждение контакта, ПК  (1)
@@ -105,7 +105,7 @@ namespace TorpedoModel
                     switch (k_)
                     {
                         case 2:         // 2 раза поддряд, то
-                            mode_ = (int)Modes.Con1;  //переход в режим СН1
+                            mode_ = Modes.Con1;  //переход в режим СН1
                             k_ = 0;     //сброс счетчика
                             break;
                         default:        //если нет, то 
@@ -115,7 +115,7 @@ namespace TorpedoModel
                     break;
 
                 case false:         //если сигнал не получен, то
-                    mode_ = (int)Modes.CV;      //возврат к первичному поиску
+                    mode_ = Modes.CV;      //возврат к первичному поиску
                     k_ = 0;         //и сброс счетчика
                     break;
             }
@@ -146,13 +146,13 @@ namespace TorpedoModel
                     else                     //если дистанция меньше d2
                     {
                         
-                            mode_ = (int)Modes.Con2;    //переход к режиму СН2
+                            mode_ = Modes.Con2;    //переход к режиму СН2
                                     
                     }
                     break;
                 case false:         //если сигнала нет, 
                     if (speed == s2)     //если скорость = 28 узл, то 
-                        mode_ = (int)Modes.PS1;     //переход к режиму ПРП1
+                        mode_ = Modes.PS1;     //переход к режиму ПРП1
                     else
                     {
                         if (speed > s2)
@@ -160,7 +160,7 @@ namespace TorpedoModel
                         else
                         {
                             obj.SetEnginePower(s2);
-                            mode_ = (int)Modes.PS1;
+                            mode_ = Modes.PS1;
                         }
                     }            
                     break;
@@ -178,11 +178,11 @@ namespace TorpedoModel
                     }
                     else
                     {
-                        mode_ = (int)Modes.Con3;     //если дистанция меньше d3 - переход к режиму СН3
+                        mode_ = Modes.Con3;     //если дистанция меньше d3 - переход к режиму СН3
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ = (int)Modes.PS2;     //переход к режиму ПРП2
+                    mode_ = Modes.PS2;     //переход к режиму ПРП2
                     break;
             }
         }
@@ -198,11 +198,11 @@ namespace TorpedoModel
                     }
                     else
                     {
-                        mode_ = (int)Modes.Con4;     //если дистанция меньше d4 - переход к режиму СН4
+                        mode_ = Modes.Con4;     //если дистанция меньше d4 - переход к режиму СН4
                     }
                     break;
                 case false:         //если сигнала нет, 
-                    mode_ = (int)Modes.PS3;     //переход к режиму ПРП3
+                    mode_ = Modes.PS3;     //переход к режиму ПРП3
                     break;
             }
         }
@@ -212,10 +212,10 @@ namespace TorpedoModel
             switch (targ.isReceived)
             {
                 case true:                      //если сигнал есть,
-                    mode_ = (int)Modes.G;     //переход к режиму НВ
+                    mode_ = Modes.G;     //переход к режиму НВ
                     break;
                 case false:                  //если сигнала нет, 
-                    mode_ = (int)Modes.PS4;     //переход к режиму ПРП4
+                    mode_ = Modes.PS4;     //переход к режиму ПРП4
                     break;
             }
         }
@@ -223,25 +223,25 @@ namespace TorpedoModel
         public void PrecursiveSearch1()     //предварительный поиск ПРП1    (6)
         {
             //предварительный поиск  
-            mode_ = (int)Modes.RS2;  //переход к режиму ПП2
+            mode_ = Modes.RS2;  //переход к режиму ПП2
         }
 
         public void PrecursiveSearch2()     //предварительный поиск ПРП2    (7)
         {
             //предварительный поиск  
-            mode_ = (int)Modes.RS1;  //переход к режиму ПП1
+            mode_ = Modes.RS1;  //переход к режиму ПП1
         }
 
         public void PrecursiveSearch3()     //предварительный поиск ПРП3    (8)
         {
             //предварительный поиск  
-            mode_ = (int)Modes.RS1;  //переход к режиму ПП1
+            mode_ = Modes.RS1;  //переход к режиму ПП1
         }
 
         public void PrecursiveSearch4()     //предварительный поиск ПРП4    (9)
         {
             //предварительный поиск  
-            mode_ = (int)Modes.RS1;  //переход к режиму ПП1
+            mode_ = Modes.RS1;  //переход к режиму ПП1
         }
 
         public void RepeatedSearch1()  //повторный поиск ПП1 (ближний)      (10)
@@ -249,7 +249,7 @@ namespace TorpedoModel
             switch (targ.isReceived)
             {
                 case true:                //если есть сигнал, то
-                    mode_ = (int)Modes.Con2;   //переход в режим СН2
+                    mode_ = Modes.Con2;   //переход в режим СН2
                     break;
                 case false:               //если нет, то
                     // циркуляция
@@ -262,7 +262,7 @@ namespace TorpedoModel
             switch (targ.isReceived)
             {
                 case true:                //если есть сигнал, то
-                    mode_ = (int)Modes.Con1;   //переход в режим СН1
+                    mode_ = Modes.Con1;   //переход в режим СН1
                     break;
                 case false:               //если нет, то
                     // циркуляция
@@ -284,7 +284,7 @@ namespace TorpedoModel
                 case 1:                 
                     if (targ.isClassified = false)  //если цель не классифицирована, тогда
                     {
-                        mode_ = (int)Modes.CV;           //переход в режим ПК
+                        mode_ = Modes.CV;           //переход в режим ПК
                         k_ = 0;                     //обнуление флага k_
                     }
                     break;
@@ -306,7 +306,7 @@ namespace TorpedoModel
 
             if (target.isTrue = false)    //проверка на истинность по итогам классификации 
             {                           //если цель ложная, то
-                mode_ = (int)Modes.AS;  //переход в режим ПДО
+                mode_ = Modes.AS;  //переход в режим ПДО
             }
         }
 
