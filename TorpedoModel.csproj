@@ -60,6 +60,7 @@
     <Compile Include="Classes\TorpedoControlAlgorithm.cs" />
     <Compile Include="Classes\Core.cs" />
     <Compile Include="Interfaces\IObjectControl.cs" />
+    <Compile Include="Interfaces\ITorpedo.cs" />
     <Compile Include="Interfaces\ITorpedoControlAlgorithm.cs" />
     <Compile Include="Library\Geometry\Coordinates.cs" />
     <Compile Include="Program.cs" />

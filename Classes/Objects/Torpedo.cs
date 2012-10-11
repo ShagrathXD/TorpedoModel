@@ -8,11 +8,11 @@ using TorpedoModel.Classes;
 
 namespace TorpedoModel.Classes
 {
-    public class Torpedo 
+    public class Torpedo : ITorpedo 
     {
        TorpedoControlAlgorithm alg;
        public Coordinates coord = new Coordinates();  //инициализация координат
-       public float depth;          //глубина торпеды
+       float depth_;          //глубина торпеды
 
 
        public Torpedo(Coordinates coord_)     //инициализация всей торпеды
@@ -21,11 +21,7 @@ namespace TorpedoModel.Classes
            alg = new TorpedoControlAlgorithm(new Target());  //передача объекта управления и цели в алгоритм 
        }
 
-       public void SetTorpedoPosition(Coordinates torpedoPosition) //запись координат торпеды
-       {                   
-           coord = torpedoPosition;
-       }
-
+ 
        public void Algorithm(Angle targPeleng_, float targDistance_, Angle targCourse_, float targSpeed_)      //старт алгоритма торпеды
        {
            alg.SetTargetInformation(targPeleng_, targDistance_, targCourse_, targSpeed_);
@@ -35,9 +31,25 @@ namespace TorpedoModel.Classes
 
        public float GetSpeed()      //возврат значения скорости торпеды
        {
-           return alg.obj.EnginePower;
+           return alg.obj.enginePower;
        }
 
 
+
+       #region ITorpedo Members
+
+       public void SetTorpedoDepth(float depth)
+       {
+           depth_ = depth;
+       }
+
+       public void SetTorpedoPosition(Coordinates torpedoPosition) //запись координат торпеды
+       {
+           coord = torpedoPosition;
+       }
+
+
+
+       #endregion
     }
 }
